@@ -6,8 +6,27 @@
         xmlns:local="clr-namespace:zadanie_11"
         mc:Ignorable="d"
         Title="KonsultantWindow" Height="450" Width="800">
-    <Grid>
+
+
+    <Grid Height="434" VerticalAlignment="Top">
         <Button x:Name="Konsultant_Show_Clients" Content="Показать клиентов" HorizontalAlignment="Left" Height="50" Margin="160,306,0,0" VerticalAlignment="Top" Width="117" Click="Konsultant_Show_Clients_Click"/>
-        <TextBox x:Name="TextBox" Margin="41,35,41,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="182"/>
+        <TextBox x:Name="TextBox" Text="{Binding ElementName=lsClients, Path=SelectedItem.Phone}" Margin="10,10,428,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="77"/>
+        <Button x:Name="Konsultant_Save_Clients" Content="Сохранить клиентов" HorizontalAlignment="Left" Height="50" Margin="314,306,0,0" VerticalAlignment="Top" Width="117" Click="Konsultant_Save_Clients_Click"/>
+
+        <ListView Name="lsClients" Margin="400,10,10,180" SelectionChanged="lsClients_SelectionChanged" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Width="85" Header="Фамилия" DisplayMemberBinding="{Binding Path=Familiya}"></GridViewColumn>
+                        <GridViewColumn Width="79" Header="Имя" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
+                        <GridViewColumn Width="80" Header="Отчество" DisplayMemberBinding="{Binding Path=Othestvo}"></GridViewColumn>
+                        <GridViewColumn Width="70" Header="Телефон" DisplayMemberBinding="{Binding Path=Phone}"></GridViewColumn>
+                        <GridViewColumn x:Name="Pasport" Width="70" Header="Паспорт" DisplayMemberBinding="{Binding Path=Pasport}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="Back_Main_Menu" Content="Назад" HorizontalAlignment="Left" Margin="10,363,0,0" VerticalAlignment="Top" Click="Back_Main_Menu_Click"/>
     </Grid>
+
 </Window>

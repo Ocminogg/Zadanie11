@@ -31,5 +31,12 @@ namespace zadanie_11
             konsultantWindow.Show();
             Hide();
         }
+
+        private void Meneger_Click(object sender, RoutedEventArgs e)
+        {
+            Meneger_Window meneger_Window = new Meneger_Window();
+            meneger_Window.Show();
+            Hide();
+        }
     }
 }

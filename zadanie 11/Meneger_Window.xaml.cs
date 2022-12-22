@@ -13,22 +13,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-
 namespace zadanie_11
 {
     /// <summary>
-    /// Логика взаимодействия для KonsultantWindow.xaml
+    /// Логика взаимодействия для Meneger_Window.xaml
     /// </summary>
-    public partial class KonsultantWindow : Window
+    public partial class Meneger_Window : Window
     {
-        public KonsultantWindow()
+        public Meneger_Window()
         {
             InitializeComponent();
-            
         }
 
-        private void Konsultant_Show_Clients_Click(object sender, RoutedEventArgs e)
+                
+
+        private void Show_Clients_Click(object sender, RoutedEventArgs e)
         {
+            TextBox.Clear();
+
             List<Clients> list = new List<Clients>();
 
             for (uint i = 1; i <= 5; i++)
@@ -38,32 +40,26 @@ namespace zadanie_11
 
             JsonClass jsonClass = new JsonClass();
 
-            jsonClass.SerializeClientsList(list, "_listWorker.json");
+
             list = jsonClass.DeserializeClientsList("_listWorker.json");
-                        
-            //lsClients.ItemsSource = list;
-            
-            
+
+            Console.WriteLine();
             foreach (var item in list)
             {
-                if (item.Pasport == null)
-                    lsClients.Items.Add(item);
-                if (item.Pasport != null)
-                {
-                    item.pasport = "******";                    
-                    lsClients.Items.Add(item);
-                }                
+                TextBox.Text += item.PrintAll() + "\n";
             }
-
-
         }
 
-        private void Konsultant_Save_Clients_Click(object sender, RoutedEventArgs e)
+        private void Save_Clients_Click(object sender, RoutedEventArgs e)
         {
             List<Clients> list = new List<Clients>();
-            list = (List<Clients>)lsClients.ItemsSource;
             JsonClass jsonClass = new JsonClass();
             jsonClass.SerializeClientsList(list, "_listWorker.json");
+        }
+
+        private void Add_Clients_Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void Back_Main_Menu_Click(object sender, RoutedEventArgs e)

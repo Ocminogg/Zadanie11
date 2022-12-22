@@ -60,7 +60,7 @@ namespace zadanie_11
         /// <summary>
         /// Телефон
         /// </summary>
-        public string Phone { get { return this.phone; } }
+        public string Phone { get { return this.phone; } set { phone = value; } }
 
         /// <summary>
         /// Паспорт

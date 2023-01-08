@@ -29,6 +29,7 @@ namespace zadanie_11
 
         private void Konsultant_Show_Clients_Click(object sender, RoutedEventArgs e)
         {
+            lsClients.Items.Clear();
             List<Clients> list = new List<Clients>();
 
             for (uint i = 1; i <= 5; i++)
@@ -64,6 +65,22 @@ namespace zadanie_11
             list = (List<Clients>)lsClients.ItemsSource;
             JsonClass jsonClass = new JsonClass();
             jsonClass.SerializeClientsList(list, "_listWorker.json");
+
+            /////////////////////////////////////////////////////////////////////
+
+            List<Clients> listOld = new List<Clients>();
+            List<Clients> listChange = new List<Clients>();
+            listChange = (List<Clients>)lsClients.ItemsSource;
+            JsonClass jsonClass = new JsonClass();
+            listOld = jsonClass.DeserializeClientsList("_listWorker.json");
+            
+            int length = listOld.Count;
+            for (int i = 0; i < length; i++)
+            {
+                listOld[i].Phone = listChange[i].Phone;
+                
+            }
+            jsonClass.SerializeClientsList(listOld, "_listWorker.json");
         }
 
         private void Back_Main_Menu_Click(object sender, RoutedEventArgs e)

@@ -61,10 +61,11 @@ namespace zadanie_11
 
         private void Konsultant_Save_Clients_Click(object sender, RoutedEventArgs e)
         {
-            List<Clients> list = new List<Clients>();
-            list = (List<Clients>)lsClients.ItemsSource;
-            JsonClass jsonClass = new JsonClass();
-            jsonClass.SerializeClientsList(list, "_listWorker.json");
+            //List<Clients> list = new List<Clients>();
+            //list = (List<Clients>)lsClients.ItemsSource;
+
+            //JsonClass jsonClass = new JsonClass();
+            //jsonClass.SerializeClientsList(list, "_listWorker.json");
 
             /////////////////////////////////////////////////////////////////////
 

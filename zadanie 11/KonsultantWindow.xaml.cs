@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -71,11 +72,17 @@ namespace zadanie_11
 
             List<Clients> listOld = new List<Clients>();
             List<Clients> listChange = new List<Clients>();
-            listChange = (List<Clients>)lsClients.ItemsSource;
+            //listChange = lsClients.ItemsSource as List<Clients>;
             JsonClass jsonClass = new JsonClass();
             listOld = jsonClass.DeserializeClientsList("_listWorker.json");
             
             int length = listOld.Count;
+            for (int i = 0; i < length; i++)
+            {
+                MessageBox.Show(listChange[i].Phone);
+                listChange.Add(lsClients.Items[i] as List<Clients>);
+            }
+            
             for (int i = 0; i < length; i++)
             {
                 listOld[i].Phone = listChange[i].Phone;

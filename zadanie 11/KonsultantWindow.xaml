@@ -3,30 +3,40 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:zadanie_11"
+        xmlns:local="clr-namespace:zadanie_11" 
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"        
         mc:Ignorable="d"
         Title="KonsultantWindow" Height="450" Width="800">
 
 
     <Grid Height="434" VerticalAlignment="Top">
         <Button x:Name="Konsultant_Show_Clients" Content="Показать клиентов" HorizontalAlignment="Left" Height="50" Margin="160,306,0,0" VerticalAlignment="Top" Width="117" Click="Konsultant_Show_Clients_Click"/>
-        <TextBox x:Name="TextBox" Text="{Binding ElementName=lsClients, Path=SelectedItem.Phone}" Margin="10,10,428,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="77"/>
+        <TextBox x:Name="TextBox" Text="{Binding ElementName=clientsGrid, Path=SelectedItem.Phone}" Margin="10,248,582,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="39"/>
         <Button x:Name="Konsultant_Save_Clients" Content="Сохранить клиентов" HorizontalAlignment="Left" Height="50" Margin="314,306,0,0" VerticalAlignment="Top" Width="117" Click="Konsultant_Save_Clients_Click"/>
-
-        <ListView Name="lsClients" Margin="400,10,10,180" d:ItemsSource="{d:SampleData ItemCount=5}">
-            <ListView.View>
-                <GridView>
-                    <GridView.Columns>
-                        <GridViewColumn Width="85" Header="Фамилия" DisplayMemberBinding="{Binding Path=Familiya}"></GridViewColumn>
-                        <GridViewColumn Width="79" Header="Имя" DisplayMemberBinding="{Binding Path=Name}"></GridViewColumn>
-                        <GridViewColumn Width="80" Header="Отчество" DisplayMemberBinding="{Binding Path=Othestvo}"></GridViewColumn>
-                        <GridViewColumn Width="70" Header="Телефон" DisplayMemberBinding="{Binding Path=Phone}"></GridViewColumn>
-                        <GridViewColumn x:Name="Pasport" Width="70" Header="Паспорт" DisplayMemberBinding="{Binding Path=Pasport}"/>
-                    </GridView.Columns>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        
         <Button x:Name="Back_Main_Menu" Content="Назад" HorizontalAlignment="Left" Margin="10,363,0,0" VerticalAlignment="Top" Click="Back_Main_Menu_Click"/>
+        <Button x:Name="Generation_Clients" Content="Сгенерировать клиентов" HorizontalAlignment="Left" Height="50" Margin="489,306,0,0" VerticalAlignment="Top" Width="156" Click="Button_Click"/>
+        
+        <DataGrid x:Name="clientsGrid" AutoGenerateColumns="False" Margin="10,10,10,193" RowBackground="LightGray" AlternatingRowBackground="White">/>
+            
+            <DataGrid.Resources>
+                
+            </DataGrid.Resources>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="50" Header="Время" Binding="{Binding Path=Time}"></DataGridTextColumn>
+                <DataGridTextColumn Width="50" Header="Данные изм" Binding="{Binding Path=DataChange}"></DataGridTextColumn>
+                <DataGridTextColumn Width="50" Header="Тип изм" Binding="{Binding Path=TypeChange}"></DataGridTextColumn>
+                <DataGridTextColumn Width="50" Header="Кто изменил" Binding="{Binding Path=WhoChange}"></DataGridTextColumn>
+                
+                <DataGridTextColumn Width="80" Header="Фамилия" Binding="{Binding Path=Familiya}"></DataGridTextColumn>
+                <DataGridTextColumn Width="80" Header="Имя" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Width="80" Header="Отчество" Binding="{Binding Path=Othestvo}"></DataGridTextColumn>
+                <DataGridTextColumn Width="80" Header="Телефон" Binding="{Binding Path=Phone}"></DataGridTextColumn>
+                <DataGridTextColumn x:Name="Pasport" Width="80" Header="Паспорт" Binding="{Binding Path=Pasport}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 
 </Window>
